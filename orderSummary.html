@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary</title>
+    <script
+      src="https://kit.fontawesome.com/f1eae3bf56.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,500;1,200;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+
+    
+    <link rel="stylesheet" href="styles/orderSummary.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+
+</head>
+
+
+
+<body>
+<header>
+    <div id="nav">
+        <div class="set1"><img src=".\image\samsungLogo.png" id="logo"></img></div>
+        <div class="set2">
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+        <div class="set3">
+            <a href="#"</a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+        <div class="set4">
+            <a href=""><img id="search" src=".\image\searchLogo.png" alt=""></a>
+            <div class="ca" style="display:inline-block"><a href="cart.html"><img src=".\image\cart.png" alt=""><div id="cartTick"></div></a></div>
+
+            <div class="dropdown">
+              <img src=".\image\login.jpg" alt="">
+               <div class="dropdown-content">
+                 <p id="tag"></p>
+              <a href="signIn.html">Login</a>
+              <a href="signUp.html">Sign Up</a>
+              <a href="#">Log Out</a>
+            </div>
+          </div>
+        </div>
+    </div>
+</header>
+<div>
+    <div>
+        <h3> <strong> Order Summary </strong> </h3>
+    </div>
+
+    <div id="lower">
+        <div id="lower_left">
+
+           <div id="delivery_add">
+               <div> <strong> DELIVERY ADDRESS </strong> </div>
+
+               <div> <strong> Vishwajit Magar </strong> </div>
+
+               <div> Address </div>
+
+               <div>
+                   <span></span> District, </span>
+                   <span> State, </span>
+                   <span> Pin-Code </span>
+               </div>
+
+               <div> 
+                   <span> Mobile : </span>
+                   <span> <strong> 7843010355 </strong> </span> 
+               </div>
+
+               <div> <button id="change_add_btn"> <strong> CHANGE OR ADD ADDRESS </strong> </button> </div>
+           </div>
+
+           <div id="est_delivery">
+               <div> <strong> ESTIMATED DELIVERY </strong> </div>
+
+               <div> <strong> Shipment 1 of 1 : By 25 December 2021 </strong> </div>
+           </div>
+        </div>
+
+
+        <div id="lower_right">
+           <div id="price_summary">
+
+               <div> <strong> PRICE SUMMARY </strong> </div>
+
+               <div>
+                   <span> Total MRP (Incl. of taxes) &nbsp; &nbsp;</span>
+                   <span id="t1" class="price_margin"> ₹ 59,999 </span>
+               </div>
+
+               <div>
+                   <span> Delivery Fee &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span>
+                   <span id="t2" class="price_margin"> FREE </span>
+               </div>
+
+               <div>
+                   <span> Bag Discount &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+                   <span class="price_margin">  ₹ 13000 </span>
+               </div>
+
+               <div>
+                   <span> Combo Offer Discount T&C &nbsp;</span>
+                   <span class="price_margin">  ₹ 3000 </span>
+               </div>
+
+               <div>
+                   <span> Subtotal &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+                   <span id="t4" class="price_margin"> ₹ 53,999 </span>
+               </div>
+
+               <div id="total_save">
+                  <span>  You are saving ₹ </span> 
+                  <span>  16000  </span>
+                  <span>  on this order  </span>
+               </div>
+           </div>
+
+           <div id="toal_amo">
+               <div>
+                   <div>
+                           Total
+                   </div>
+
+                   <div>
+                       <span> ₹ </span> 
+                       <span id="t5"> 53,999</span>
+                   </div>
+               </div>
+
+
+               <div>
+                   <a href="payment.html"><button  id="continnue_btn"> Proceed to payment </button> </a>
+               </div>
+           </div>
+
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+
+
+    var initial_price = document.getElementById("t1")
+    var final_price = document.getElementById("t4")
+    var total_price = document.getElementById("t5")
+    
+    let subtotal = JSON.parse(localStorage.getItem("total") )
+    
+    let MRP = JSON.parse(localStorage.getItem("MRP"))
+    console.log(subtotal)
+    initial_price.textContent=MRP[MRP.length-1]
+    // final_price.textContent = subtotal[subtotal.length-1]
+    // total_price.textContent = subtotal[subtotal.length-1]
+    final_price.textContent = 133999;
+    total_price.textContent = 133999;
+    let users = JSON.parse(localStorage.getItem("users")) 
+     let name=(users[users.length-1].Name)
+      tag.innerHTML=name
+      console.log(name)
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    </script>

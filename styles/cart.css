@@ -1,0 +1,121 @@
+.main {
+  display: grid;
+  /* border: 2px solid red; */
+  grid-template-columns: 54% 44%;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+#container {
+  height: 1500px;
+  /* border: 2px solid red; */
+}
+#container > div {
+  display: grid;
+  grid-template-columns: 40% 40%;
+  height: 200px;
+  border: 1px solid gray;
+  margin: auto;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+#container > div > div:nth-child(1) img {
+  max-width: 50%;
+  padding: 10px;
+}
+#container > div > div p {
+  margin: 16px;
+  font-family: montserrat, sans-serif;
+}
+
+#summary {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-rows: 20% 25% 40%;
+  /* border: 2px solid red; */
+  height: 400px;
+}
+
+#summary > div:nth-child(1) {
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+  letter-spacing: 3px;
+  background-color: whitesmoke;
+
+  padding-left: 28px;
+
+  padding-top: 2px;
+}
+
+#summary > div:nth-child(1) h5 {
+  margin: 11px 5px;
+}
+
+#summary > div:nth-child(2) {
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+#summary > div:nth-child(3) {
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+#coupon {
+  height: 25px;
+  width: 180px;
+  margin-left: 33px;
+}
+#submit {
+  height: 30px;
+  width: 60px;
+  background-color: #bdbdbd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+#summary > div:nth-child(2) input {
+  margin-top: 30px;
+}
+#total {
+  height: 300px;
+}
+#total > div:nth-child(1) {
+  border: 1px solid gray;
+  height: 30px;
+  width: 99.5%;
+  background-color: whitesmoke;
+}
+#total > h5 {
+  margin-top: 16px;
+  padding-bottom: 0px;
+  margin-left: 34px;
+}
+#total > div h4 {
+  margin-top: 4px;
+  margin-left: 31px;
+}
+.box {
+  padding-left: 34px;
+}
+#t1 {
+  padding-left: 220px;
+}
+.t2 {
+  padding-left: 313px;
+  color: rgb(137, 204, 35);
+}
+#t3 {
+  padding-left: 275px;
+}
+#t4 {
+  padding-left: 349px;
+}
+#payment {
+  height: 30px;
+  width: 300px;
+  height: 50px;
+  background-color: #bdbdbd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}

@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn</title>
+    <script
+      src="https://kit.fontawesome.com/f1eae3bf56.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,500;1,200;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+
+    
+    <link rel="stylesheet" href="./styles/signIn.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+
+</head>
+
+
+
+<body>
+<header>
+    <div id="nav">
+        <a href="home.html"><div class="set1"><img src=".\image\samsungLogo.png" id="logo"></img></div></a>
+
+        <div class="set2">
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+        <div class="set3">
+            <a href="#"</a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+        <div class="set4">
+            <a href=""><img id="search" src=".\image\searchLogo.png" alt=""></a>
+            <div class="ca" style="display:inline-block"><a href="cart.html"><img src=".\image\cart.png" alt=""><div id="cartTick"></div></a></div>
+
+            <div class="dropdown">
+              <img src=".\image\login.jpg" alt="">
+               <div class="dropdown-content">
+                 <p id="tag"></p>
+              <a href="signIn.html">Login</a>
+              <a href="signUp.html">Sign Up</a>
+              <a href="#">Log Out</a>
+            </div>
+          </div>
+        </div>
+    </div>
+</header>
+<div id="container">
+    <div class="box"> 
+         <div>
+    <h2> Log in to your account</h2>
+    </div>
+    <div>
+<form onsubmit="signup(event)" id="myForm">
+    <div>
+        <input type="text" id="nm" name="name" placeholder="name" value>
+
+    </div>
+    <div>
+        <input type="text" id="email" name="email" placeholder="Email" value>
+
+    </div>
+    <div>
+        <input type="password" id="pass" name="pass" placeholder="Password" value>
+      
+    </div>
+    <div class="forgotPassword">
+        <button type="button" id="forgot_password_link">Forgot Password?</button>
+    </div>
+    <div id="d1">
+    <a href="home.html"><button  id="login_password_submit" type="submit" >Login</button></a>
+</div>
+</form>
+</div>
+</div>
+ 
+    </div>
+  
+</body>
+</html>
+<script>
+let nm=document.getElementById("name")
+nm.innerHTML = "Login"
+
+
+
+function signup(e){
+    e.preventDefault();
+
+    let myForm = document.getElementById("myForm");
+
+    let name = document.getElementById("nm")
+    let email =document.getElementById("email");
+    let pass= document.getElementById("pass");
+
+    let Name=name.value;
+    let Email =email.value;
+    let password= pass.value;
+
+    let all_users = JSON.parse(localStorage.getItem("users"));
+
+    var count = 0;
+all_users.forEach(function(user){
+
+    if(Name===user.Name && Email ===user.Email && password ===user.password && count==0){
+
+        alert("logged in succesfully");
+    nm.innerHTML = user.Name
+        count++
+        window.location.href="home.html"
+    }
+    
+})
+if(count==0){
+alert("Invalid Credentials")
+}
+
+
+
+}
+</script>

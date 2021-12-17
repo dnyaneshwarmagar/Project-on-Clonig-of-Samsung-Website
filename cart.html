@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <script
+      src="https://kit.fontawesome.com/f1eae3bf56.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,500;1,200;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+
+    
+    <link rel="stylesheet" href="styles/cart.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+
+</head>
+
+
+
+<body>
+<header>
+    <div id="nav">
+        <a href="home.html"><div class="set1"><img src=".\image\samsungLogo.png" id="logo"></img></div></a>
+        <div class="set2">
+            <a href="#">Mobile</a>
+            <a href="#">TV&AV</a>
+            <a href="#">Home Appliances</a>
+            <a href="#">Computing</a>
+            <a href="#">Displays</a>
+            <a href="#">Offers</a>
+        </div>
+        <div class="set3">
+            <a href="#">Explore</a>
+            <a href="#">Support</a>
+            <a href="#">For Business</a>
+        </div>
+        <div class="set4">
+            <a href=""><img id="search" src=".\image\searchLogo.png" alt=""></a>
+            <div class="ca" style="display:inline-block"><a href="cart.html"><img src=".\image\cart.png" alt=""><div id="cartTick"></div></a></div>
+
+            <div class="dropdown">
+              <img src=".\image\login.jpg" alt="">
+               <div class="dropdown-content">
+                 <p id="tag"></p>
+              <a href="signIn.html">Login</a>
+              <a href="signUp.html">Sign Up</a>
+              <a href="#">Log Out</a>
+            </div>
+          </div>
+        </div>
+    </div>
+</header>
+<div class="main">
+    <div id="container"></div>
+    <div id="summary">
+      <div>
+        <h5>
+          Get flat Rs 10000 Discount on your First Purchase above Rs.25000 &amp;
+        Free shipping. Coupon code - NEW100
+        </h5>
+        
+      </div>
+      <div>
+        <input id="coupon" type="text" /> <input id="submit" onclick="discount()" type="submit" />
+      </div>
+      <div id="total">
+        <div><h4>Price summary</h4></div>
+        <div class="box">
+          <p>Total MRP(incl.of taxes) <span id="t1"></span> </p>
+          <p>Delivery Fee<span class="t2">FREE</span></p>
+          <p>Coupon Discount<span id="t3"></span></p>
+          <p>Subtotal<span id="t4"></span></p>
+          <a href="ordersummary.html"> <button id="payment">Continue</button></a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+let total = document.getElementById("t1")
+let promo = document.getElementById("t3")
+
+
+let subtotal = document.getElementById("t4")
+
+
+let cart = JSON.parse(localStorage.getItem("cart"));
+let container = document.getElementById("container");
+var output= 0;
+var count=0;
+
+let coupon = document.getElementById("coupon")
+let submit = document.getElementById("submit")
+
+
+
+function showproducts() {
+  cart.forEach(function (product) {
+    count++
+
+
+    let div = document.createElement("div");
+    let box1 = document.createElement("div");
+    let box2 = document.createElement("div");
+
+    let image = document.createElement("img");
+    image.src = product.image;
+    let product_name = document.createElement("p");
+    product_name.textContent = product.name;
+
+
+    let select = document.createElement("select")
+    select.setAttribute("class","select")
+  select.addEventListener("change",show)
+    let o1 = document.createElement("option")
+   
+
+    o1.textContent="256GB"
+  
+    let o2 = document.createElement("option")
+    o2.textContent="512GB"
+   
+
+let remove = document.createElement("button")
+remove.innerText = "delete"
+remove.addEventListener("click",makedelete)
+  
+
+    let product_size = document.createElement("p");
+    product_size.setAttribute("class","size")
+    product_size.textContent = product.size;
+
+
+    let product_price = document.createElement("p");
+
+    product_price.textContent =  product.price;
+    output = output + Number(product.price)
+
+
+
+
+
+    box1.append(image)
+    select.append(o1,o2)
+    box2.append(product_name,product_price,product_size,select,remove)
+   
+    div.append(box1,box2);
+
+    container.append(div);
+  });
+  total.textContent = output
+}
+showproducts();
+
+
+
+
+
+      
+    
+   
+
+
+    
+
+if(localStorage.getItem("total")===null){
+localStorage.setItem("total",JSON.stringify([]))
+}
+if(localStorage.getItem("MRP")===null){
+localStorage.setItem("MRP",JSON.stringify([]))
+
+}
+
+var arr2 = JSON.parse(localStorage.getItem("MRP"))
+console.log('arr2: ', arr2);
+arr2.push(output)
+localStorage.setItem("MRP",JSON.stringify(arr2))
+
+
+
+if(localStorage.getItem("discount")===null){
+localStorage.setItem("discount",JSON.stringify([]))
+}
+
+
+var counter = 0;
+
+function discount(){
+
+  var arr = JSON.parse(localStorage.getItem("total"))
+  
+  
+if(coupon.value=="NEW100"&&counter<1){
+counter++
+subtotal.textContent = output-10000;
+t3.textContent = 100
+//  var arr = JSON.parse(localStorage.getItem("total"))
+arr.push(output-100)
+var arr1 =JSON.parse(localStorage.getItem("discount"))
+arr1.push(100)
+localStorage.setItem("discount",JSON.stringify(arr1))
+
+
+}else{
+arr.push(output)
+
+}
+
+localStorage.setItem("total",JSON.stringify(arr))
+
+
+
+}
+function show(e){
+console.log(e.target.parentNode)
+let size =e.target.parentNode.querySelector(".size")
+
+let select = e.target.parentNode.querySelector(".select").value;
+console.log(select)
+size.textContent = "RAM : "+select;
+}
+
+
+function makedelete(e){
+count--
+e.target.parentNode.parentNode.remove();
+let total = document.getElementById("t1")
+let sub=(e.target.parentNode.querySelectorAll("p")[1].textContent)
+console.log(sub)
+total.textContent = output-Number(sub)
+if(count==0){
+  total.textContent="0"
+}
+}
+
+let users = JSON.parse(localStorage.getItem("users")) 
+let name=(users[users.length-1].Name)
+tag.innerHTML=name
+console.log(name)
+
+</script>

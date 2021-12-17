@@ -1,0 +1,15 @@
+button {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 1%;
+
+  font-size: 16px;
+}
+.box {
+  /* border: 2px solid red; */
+  margin-top: 40px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung Galaxy Z fold3</title>
+    <script
+      src="https://kit.fontawesome.com/f1eae3bf56.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,500;1,200;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+
+    
+    <link rel="stylesheet" href="styles/product1.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+
+</head>
+
+
+
+<body>
+<header>
+    <div id="nav">
+        <a href="home.html"><div class="set1"><img src=".\image\samsungLogo.png" id="logo"></img></div></a>
+
+        <div class="set2">
+            <a href="#">Mobile</a>
+            <a href="#">TV&AV</a>
+            <a href="#">Home Appliances</a>
+            <a href="#">Computing</a>
+            <a href="#">Displays</a>
+            <a href="#">Offers</a>
+        </div>
+        <div class="set3">
+            <a href="#">Explore</a>
+            <a href="#">Support</a>
+            <a href="#">For Business</a>
+        </div>
+        <div class="set4">
+            <a href=""><img id="search" src=".\image\searchLogo.png" alt=""></a>
+            <div class="ca" style="display:inline-block"><a href="cart.html"><img src=".\image\cart.png" alt=""><div id="cartTick"></div></a></div>
+
+            <div class="dropdown">
+              <img src=".\image\login.jpg" alt="">
+               <div class="dropdown-content">
+                 <p id="tag"></p>
+              <a href="signIn.html">Login</a>
+              <a href="signUp.html">Sign Up</a>
+              <a href="#">Log Out</a>
+            </div>
+          </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="box1">
+      <img
+        src="https://images.samsung.com/is/image/samsung/p6pim/in/sm-m526bzkhinu/gallery/in-galaxy-m52-5g-m526-sm-m526bzkhinu-514958242?$684_547_PNG$"
+        alt=""
+      />
+    </div>
+    <div class="box2">
+      <div>
+        <h1 class="brandName">Samsung</h1>
+        <h1 class="productName">samsung Galaxy M52</h1>
+        <span class="rupee_icon">₹</span>
+        <span id="testNetProdPrice">26999.00</span>
+        <span class="discPrice" id="testOriginalPrice">29999.00</span>
+        <span class="inclusiveOfAllTaxes">Inclusive of taxes</span>
+
+        <div class="loyalty">
+          <span></span>
+          <span></span>
+          <a>know more</a>
+
+          <h3>Select RAM</h3>
+        </div>
+      </div>
+      <div class="sizes">
+        <div id="s1" onclick="size1()" ><h3>256GB</h3></div>
+        <div id="s2" onclick="size2()"><h3>512GB</h3></div>
+       
+      </div>
+      <div class="cart">
+        <div>
+         <i class="far fa-heart"></i>
+        </div>
+        <div>
+         <button id="cart">Add TO Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="product_description">
+    <div>
+      <div class="content1">
+        <h4>PRODUCT DESCRIPTION</h4>
+        <p>
+          <br />
+        </p>
+        <h4>T</h4>
+        <p></p>
+        <h4> <br /></h4>
+        <p>
+         
+        </p>
+      </div>
+    </div>
+    <div class="content2">
+      <div>
+        <h4>15 DAY RETURNS & EXCHANGE</h4>
+        <p>
+          Easy returns upto 15 days of delivery. Exchange available on select
+          pincodes
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+
+
+
+
+
+
+  let btn = document.getElementById("cart")
+  console.log(btn)
+
+  if(localStorage.getItem("cart")===null){
+      localStorage.setItem("cart",JSON.stringify([]));
+    }
+
+  btn.onclick = function(){
+      addtocart()
+  }
+
+ var name ="samsung Galaxy M52";
+        var price=26999.00;
+        var image="https://images.samsung.com/is/image/samsung/p6pim/in/sm-m526bzkhinu/gallery/in-galaxy-m52-5g-m526-sm-m526bzkhinu-514958242?$684_547_PNG$";
+
+var size
+        function size1(){
+  size = "Size : 256GB"
+document.getElementById("s1").style.border="2px solid #455a64"
+document.getElementById("s2").style.border="2px solid rgba(185, 185, 185, 0.6) "
+
+
+  
+}
+function size2(){
+  size = "Size : 512GB"
+  document.getElementById("s1").style.border="2px solid rgba(185, 185, 185, 0.6)"
+
+document.getElementById("s2").style.border="2px solid #455a64 "
+
+
+
+}
+
+
+
+ function addtocart(){     
+     
+    document.getElementById("cart").style.backgroundColor="#455A64";
+        console.log(size)
+        if(size==undefined){
+          alert("selct size")
+
+        }
+        else{
+          let data = {
+          name:name,
+          price:price,
+          image:image,
+          size:size,
+
+
+        }
+        console.log(data)
+
+        let arr = JSON.parse( localStorage.getItem("cart")) 
+        console.log(arr)
+        arr.push(data)
+        console.log(data)
+        localStorage.setItem("cart",JSON.stringify(arr))
+        }
+      
+
+ }
+ 
+
+ let users = JSON.parse(localStorage.getItem("users")) 
+let userName=(users[users.length-1].Name)
+let tag = document.getElementById("tag");
+tag.innerHTML=userName;
+console.log(userName)
+  
+</script>
